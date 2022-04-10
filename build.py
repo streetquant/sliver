@@ -38,7 +38,7 @@ def exec_cmd(cmd, ignore_status=False):
     print("\n" + INFO + " %s\n" % cmd)
     status = os.system(cmd)
     if status != 0 and not ignore_status:
-        print("\n" + WARN + "Command did not exit cleanly (%s) " % status)
+        print("\n" + WARN + f"Command did not exit cleanly ({status}) ")
         if input("continue? [Y/n]: ").upper() != 'Y':
             sys.exit(status)
     return status
@@ -63,7 +63,11 @@ def docker_rm_all():
 def build():
     status = exec_cmd("docker build -t sliver .")
     if status == 0:
-        print(INFO+"Build successful, start with %sdocker run -it sliver:latest%s" % (BOLD, NORM))
+        print(
+            INFO
+            + f"Build successful, start with {BOLD}docker run -it sliver:latest{NORM}"
+        )
+
         print(INFO+"Remember you'll need to manually forward network ports")
 
 def main(args):
