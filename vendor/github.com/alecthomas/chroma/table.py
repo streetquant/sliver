@@ -12,4 +12,4 @@ for line in lines:
     table[line[0].upper()].append(line)
 
 for key, value in table.items():
-    print("{} | {}".format(key, ', '.join(value)))
+    print(f"{key} | {', '.join(value)}")
